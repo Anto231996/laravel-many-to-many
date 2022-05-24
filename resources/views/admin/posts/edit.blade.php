@@ -22,6 +22,16 @@
                 <label for="name" class="form-label">Inserisci immagine</label>
                 <input type="text" name="image_url" id="image_url" class="form-control" value="{{ $post->image_url }}">
             </div>
+            <div class="mb-3">
+                <select class="form-select" name="category">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" selected>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
             <div>
                 <input class="btn btn-primary text-white" type="submit" value="Invia">
             </div>

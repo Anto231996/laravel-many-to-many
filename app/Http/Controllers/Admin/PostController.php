@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -71,7 +72,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.posts.edit", compact("post"));
+        $categories = Category::all();
+        return view("admin.posts.edit", compact('post', 'categories'));
     }
 
     /**
@@ -88,6 +90,7 @@ class PostController extends Controller
         $post->author=$data["author"]; 
         $post->content=$data["content"];
         $post->image_url=$data["image_url"];
+        $post->categories()->sync($data['category']);
         $post->update($data);
 
         return redirect()->route("admin.posts.index", $post);

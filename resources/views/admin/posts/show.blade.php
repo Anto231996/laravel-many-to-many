@@ -10,6 +10,10 @@
                 <h3>{{ $post->author }}</h3>
                 <h5>{{ $post->content }}</h5>
                 <pre>{{ $post->created_at }}</pre>
+                <h6>Categoria:</h6>
+                @foreach ($post->categories as $category)
+                    <pre>{{ $category->name }}</pre>
+                @endforeach
             </div>
         </div>
     </div>

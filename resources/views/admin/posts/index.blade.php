@@ -14,6 +14,10 @@
             <div class="text-center">
                 <h2>{{ $post->title }}</h2>
                 <h4>{{ $post->author }}</h4>
+                <h6>Categoria:</h6>
+                @foreach ($post->categories as $category)
+                    <p>{{ $category->name }}</p>
+                @endforeach
                 <a href="{{Route('admin.posts.show', $post)}}">Info</a>
                 <a href="{{Route('admin.posts.edit', $post)}}">Modifica</a>
                 <form action="{{Route('admin.posts.destroy', $post)}}" method="POST">
